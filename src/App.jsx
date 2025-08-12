@@ -1,7 +1,7 @@
 import * as pdfjsLib from 'pdfjs-dist';
 
-// 锁同一版本的 worker（v4 用 .mjs）
-const ver = pdfjsLib.version || '4.10.38';
+// 锁定 worker 到 CDN（和 package.json 里的版本一致 4.10.38）
+const ver = '4.10.38';
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   `https://cdn.jsdelivr.net/npm/pdfjs-dist@${ver}/build/pdf.worker.min.mjs`;
 
