@@ -1,10 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import * as pdfjsLib from 'pdfjs-dist'
+import React, { useEffect, useMemo, useState } from 'react';
+import * as pdfjsLib from 'pdfjs-dist';
 
-// 不再本地打包 worker；强制同版本 + 破缓存
-const ver = pdfjsLib.version || '4.10.38'
+// 锁死 worker 和库版本一致
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  `https://cdn.jsdelivr.net/npm/pdfjs-dist@${ver}/build/pdf.worker.min.mjs?v=${ver}-${Date.now()}`
+  `https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.min.mjs`;
 
 const BASIC_WORDS = new Set('the,of,and,to,a,in,that,is,for,it,as,was,with,be,by,on,are,at,from,or,an,this,which,have,has,not,were,can,will,more,one,about,also,into,other,than,its,may,like,over,after,between,first,new,use,used,using,study,research,market,price,year,years,percent,people,company,products,service'.split(','))
 
