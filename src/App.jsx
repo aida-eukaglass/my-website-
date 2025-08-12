@@ -1,9 +1,8 @@
 import * as pdfjsLib from 'pdfjs-dist';
+// 让 Vite 返回 worker 文件的真实 URL
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
-// 锁定 worker 到 CDN（和 package.json 里的版本一致 4.10.38）
-const ver = '4.10.38';
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  `https://cdn.jsdelivr.net/npm/pdfjs-dist@${ver}/build/pdf.worker.min.mjs`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 const BASIC_WORDS = new Set('the,of,and,to,a,in,that,is,for,it,as,was,with,be,by,on,are,at,from,or,an,this,which,have,has,not,were,can,will,more,one,about,also,into,other,than,its,may,like,over,after,between,first,new,use,used,using,study,research,market,price,year,years,percent,people,company,products,service'.split(','))
 
