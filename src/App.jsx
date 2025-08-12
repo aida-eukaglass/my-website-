@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react'
 import * as pdfjsLib from 'pdfjs-dist'
 // ❌ 删除这一行： import 'pdfjs-dist/build/pdf.worker.js'
 pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://unpkg.com/pdfjs-dist@4.6.82/build/pdf.worker.min.mjs'
+  'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs'
+
 
 const BASIC_WORDS = new Set('the,of,and,to,a,in,that,is,for,it,as,was,with,be,by,on,are,at,from,or,an,this,which,have,has,not,were,can,will,more,one,about,also,into,other,than,its,may,like,over,after,between,first,new,use,used,using,study,research,market,price,year,years,percent,people,company,products,service'.split(','))
 
