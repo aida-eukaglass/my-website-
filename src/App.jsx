@@ -1,6 +1,6 @@
 import * as pdfjsLib from 'pdfjs-dist';
 
-// 让 API 和 worker 永远同版本（pdfjs v4 用 .mjs）
+// 锁同一版本的 worker（v4 用 .mjs）
 const ver = pdfjsLib.version || '4.10.38';
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   `https://cdn.jsdelivr.net/npm/pdfjs-dist@${ver}/build/pdf.worker.min.mjs`;
