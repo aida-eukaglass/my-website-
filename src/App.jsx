@@ -1,9 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import * as pdfjsLib from 'pdfjs-dist';
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf';
+import pdfjsWorker from 'pdfjs-dist/legacy/build/pdf.worker.min.js';
 
-// 锁死 worker 和库版本一致
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  `https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.min.mjs`;
+// 显式指定 worker 源
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
+// 后面是你的 PDF 加载逻辑
+const loadingTask = pdfjsLib.getDocument('your-pdf-url.pdf');
+loadingTask.promise.then(pdf => {
+  console.log('PDF 加载成功', pdf);
+});
 
 const BASIC_WORDS = new Set('the,of,and,to,a,in,that,is,for,it,as,was,with,be,by,on,are,at,from,or,an,this,which,have,has,not,were,can,will,more,one,about,also,into,other,than,its,may,like,over,after,between,first,new,use,used,using,study,research,market,price,year,years,percent,people,company,products,service'.split(','))
 
