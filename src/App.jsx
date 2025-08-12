@@ -1,14 +1,9 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js';
 
-// 显式指定 worker 源
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
-
-// 后面是你的 PDF 加载逻辑
-const loadingTask = pdfjsLib.getDocument('your-pdf-url.pdf');
-loadingTask.promise.then(pdf => {
-  console.log('PDF 加载成功', pdf);
-});
+// 让 API 和 worker 永远同版本（pdfjs v4 用 .mjs）
+const ver = pdfjsLib.version || '4.10.38';
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  `https://cdn.jsdelivr.net/npm/pdfjs-dist@${ver}/build/pdf.worker.min.mjs`;
 
 const BASIC_WORDS = new Set('the,of,and,to,a,in,that,is,for,it,as,was,with,be,by,on,are,at,from,or,an,this,which,have,has,not,were,can,will,more,one,about,also,into,other,than,its,may,like,over,after,between,first,new,use,used,using,study,research,market,price,year,years,percent,people,company,products,service'.split(','))
 
